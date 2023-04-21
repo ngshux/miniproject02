@@ -15,6 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TrayComponent } from './components/tray/tray.component';
+import { SearchComponent } from './components/search/search.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { TrayComponent } from './components/tray/tray.component';
     ProductListComponent,
     ProductAlertsComponent,
     ProductDetailsComponent,
-    TrayComponent
+    TrayComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MaterialModule,
     RouterModule.forRoot([
       {path:'', component: ProductListComponent},
       {path:'products/:productId', component: ProductDetailsComponent},
