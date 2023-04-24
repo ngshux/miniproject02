@@ -1,6 +1,6 @@
 <div *ngIf="product">
     <h2>{{product.name}}</h2>
-    <h4>{{product.price | currency }}</h4>
+    <h4>{{product.price}}</h4>
     <p>{{product.description}}</p>
 
     <button type ="button" (click)="addToTray(product)">

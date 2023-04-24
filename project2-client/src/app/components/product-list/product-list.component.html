@@ -1,10 +1,10 @@
 <h2> <app-search></app-search> </h2>
 
-<h2>Ingredients</h2>
+<h2>Ingredients related to</h2>
 
 <div *ngFor="let p of products">
     <h3><a [title] = "p.name + 'details' "
-        [routerLink] = "['/products',p.id]">
+        [routerLink] = "['/products',p]">
         <img src={{p.image}}>
         {{p.name}}</a>
         <div>{{p.price}} cents per unit!</div>
