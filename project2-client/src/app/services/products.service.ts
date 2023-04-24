@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
 import { Product } from '../models/products';
@@ -17,10 +17,10 @@ export class ProductsService {
   
 
   getIngredients(name: string): Promise<Product[]>{
-    this.onSearchQuery.next(name)
-    const params = new HttpParams().set("name", name)
+    //this.onSearchQuery.next(name)
+    //const params = new HttpParams().set("name", name)
     return firstValueFrom(
-      this.http.get<Product[]>(`${BACKEND}/api/food`, {params})
+      this.http.get<Product[]>(`${BACKEND}/api/food/${name}`)
       ).then(results => {
       this.onSearchResults.next(results)
       return results;

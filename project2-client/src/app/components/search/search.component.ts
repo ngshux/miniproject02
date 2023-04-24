@@ -18,7 +18,8 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch() {
-    const ing = this.searchForm.get('ingSearch')?.value
+    const ing = this.searchForm.get('name')?.value
+    console.info('>>>> name: ', ing)
     this.prodSvc.getIngredients(ing)
       .then(ingredients => {
         this.searchForm.reset()
