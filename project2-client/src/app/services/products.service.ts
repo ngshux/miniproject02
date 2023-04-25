@@ -1,7 +1,7 @@
 import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
-import { Product } from '../models/products';
+import { Nutrients, Product } from '../models/products';
 
 const BACKEND = 'http://localhost:8080'
 
@@ -11,10 +11,10 @@ const BACKEND = 'http://localhost:8080'
 export class ProductsService {
 
   onSearchResults = new Subject<Product[]>()
+  onSearchIngredient = new Subject<Product>()
   onSearchQuery = new Subject<string>()
 
   constructor(private http: HttpClient) {}
-  
 
   getIngredients(name: string): Promise<Product[]>{
     //this.onSearchQuery.next(name)
@@ -26,4 +26,14 @@ export class ProductsService {
       return results;
     })
   }
+
+  getIngredientByID(id: number): Promise<Product>{
+    return firstValueFrom(
+      this.http.get<Product>(`${BACKEND}/api/${id}`)
+      ).then(results => {
+      this.onSearchIngredient.next(results)
+      return results;
+    })
+  }
+
 }

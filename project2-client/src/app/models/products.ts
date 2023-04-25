@@ -2,8 +2,17 @@ export interface Product{
     id: number;
     name: string;
     price: number;
+    unit: string;
     description: string;
     image: string;
+    nutrition: Nutrients[];
+}
+
+export interface Nutrients{
+    name: string;
+    amount: number;
+    unit: string;
+    percentOfDailyNeeds: number;
 }
 
 export const products = [

@@ -1,7 +1,23 @@
 <div *ngIf="product">
     <h2>{{product.name}}</h2>
-    <h4>{{product.price}}</h4>
+    <h4>{{product.price}} {{product.unit}} per unit</h4>
     <p>{{product.description}}</p>
+
+    <table matSort>
+        <tr>
+          <th mat-sort-header="name">Nutrient</th>
+          <th mat-sort-header="amount">Amount</th>
+          <th mat-sort-header="unit">Unit</th>
+          <th mat-sort-header="percentOfDailyNeeds">Daily %</th>
+        </tr>
+      
+        <tr *ngFor="let n of product.nutrition">
+          <td>{{n.name}}</td>
+          <td>{{n.amount}}</td>
+          <td>{{n.unit}}</td>
+          <td>{{n.percentOfDailyNeeds}}</td>
+        </tr>
+      </table>
 
     <button type ="button" (click)="addToTray(product)">
         Take one!
