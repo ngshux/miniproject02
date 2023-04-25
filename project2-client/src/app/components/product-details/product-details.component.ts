@@ -4,7 +4,6 @@ import { Subject, Subscription } from 'rxjs';
 import { Nutrients, Product, products } from 'src/app/models/products';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,14 +15,13 @@ export class ProductDetailsComponent implements OnInit {
   product?: Product;
   
   sub$!: Subscription
-  constructor(private route: ActivatedRoute, private cartService: CartService,
+  constructor(private route: ActivatedRoute,
               private prodSvc: ProductsService){
-    //this.product.nutrition = this.product.nutrition.slice();
   }
 
   addToTray(product: Product){
-    this.cartService.addToTray(product);
-    window.alert('Placed on Tray!');  }
+    CartService.addToTray(product);
+    window.alert('Added to cart!');  }
 
   ngOnInit(): void {
       const routeParams = this.route.snapshot.paramMap;

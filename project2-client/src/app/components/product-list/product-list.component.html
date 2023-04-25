@@ -2,18 +2,19 @@
 
 <h2>Ingredients related to</h2>
 
-<div *ngFor="let p of products">
-    <h3><a [title] = "p.name + 'details' "
+<mat-card align="center" *ngFor="let p of products">
+    <mat-card-content>
+        <img src={{p.image}}>    
+        <a [title] = "p.name + 'details' "
         [routerLink] = "['/products',p.id]"> 
-        <img src={{p.image}}>
-        {{p.name}}</a>
-        <div>{{p.price}} {{p.unit}} per unit!</div>
+        <h3>{{p.name | titlecase}}</h3></a>
 
-    </h3>
-
-    <p *ngIf = "p.description">
+        <div>{{p.price}} {{p.unit}} per unit!</div>    
+        <p *ngIf = "p.description">
         {{p.description}}
-    </p>
+        </p>
 
-    <app-product-alerts [product] = "p" (favourite)="favourite()"></app-product-alerts>
-</div>
+        <app-product-alerts [product] = "p" (favourite)="addToTray(p)"></app-product-alerts>
+    </mat-card-content>
+
+</mat-card>

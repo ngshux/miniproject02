@@ -6,6 +6,7 @@ export interface Product{
     description: string;
     image: string;
     nutrition: Nutrients[];
+    qty: number ;
 }
 
 export interface Nutrients{
@@ -21,13 +22,17 @@ export const products = [
         name: 'Croissant',
         price: 2.50,
         description: 'Conch shaped Flaky pastry classic, satki yummy',
-        image: 'hi.jpg'
+        image: 'hi.jpg',
+        unit: 'Dollars',
+        nutrition: [{name :"bello", amount:3,unit:"0",percentOfDailyNeeds:0}]
     },
     {
         id:2,
         name: 'Kouign Amann',
         price: 4.50,
         description: 'Snail shell shaped Flaky pastry extra butter n suker, satki yummier',
-        image: 'hihi.jpg'
+        image: 'hihi.jpg',
+        unit: 'Dollars',
+        nutrition: [{name :"bello", amount:3,unit:"0",percentOfDailyNeeds:0}]
     }
 ]

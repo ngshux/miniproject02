@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FormBuilder } from '@angular/forms';
+import { Product } from 'src/app/models/products';
 
 @Component({
   selector: 'app-tray',
@@ -9,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TrayComponent {
 
-  items = this.cartService.getItems();
+  items = CartService.getItems();
 
   checkoutForm = this.formBuilder.group({
     name: '',
@@ -18,4 +19,5 @@ export class TrayComponent {
 
   constructor(private cartService: CartService
     , private formBuilder: FormBuilder){}
+
 }

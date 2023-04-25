@@ -37,7 +37,7 @@ import { MaterialModule } from './material.module';
     RouterModule.forRoot([
       {path:'', component: ProductListComponent},
       {path:'products/:productId', component: ProductDetailsComponent},
-      {path:'tray', component: TrayComponent}
+      {path:'cart', component: TrayComponent}
     ]),
     HttpClientModule,
     ReactiveFormsModule

@@ -1,25 +1,31 @@
-<div *ngIf="product">
-    <h2>{{product.name}}</h2>
-    <h4>{{product.price}} {{product.unit}} per unit</h4>
-    <p>{{product.description}}</p>
-
-    <table matSort>
-        <tr>
-          <th mat-sort-header="name">Nutrient</th>
-          <th mat-sort-header="amount">Amount</th>
-          <th mat-sort-header="unit">Unit</th>
-          <th mat-sort-header="percentOfDailyNeeds">Daily %</th>
-        </tr>
-      
-        <tr *ngFor="let n of product.nutrition">
-          <td>{{n.name}}</td>
-          <td>{{n.amount}}</td>
-          <td>{{n.unit}}</td>
-          <td>{{n.percentOfDailyNeeds}}</td>
-        </tr>
-      </table>
-
-    <button type ="button" (click)="addToTray(product)">
-        Take one!
-    </button>
-</div>
+<mat-card *ngIf="product">
+    <mat-card-header >
+        <h2>{{product.name | titlecase}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <h4>{{product.price}} {{product.unit}} per unit</h4>
+        <p>{{product.description}}</p>
+        <button mat-raised-button color="accent" type ="button" (click)="addToTray(product)">
+            <mat-icon id="material-icons">shopping_cart</mat-icon>Add to cart!
+        </button>
+        <h3>Nutrition info</h3>
+        <mat-card-subtitle>
+            <table matSort>
+                <tr>
+                  <th mat-sort-header="name">Nutrient</th>
+                  <th mat-sort-header="amount">Amount</th>
+                  <th mat-sort-header="unit">Unit</th>
+                  <th mat-sort-header="percentOfDailyNeeds">Daily %</th>
+                </tr>
+              
+                <tr *ngFor="let n of product.nutrition">
+                  <td>{{n.name}}</td>
+                  <td>{{n.amount}}</td>
+                  <td>{{n.unit}}</td>
+                  <td>{{n.percentOfDailyNeeds}}</td>
+                </tr>
+            </table>
+            
+        </mat-card-subtitle>
+    </mat-card-content>
+</mat-card>

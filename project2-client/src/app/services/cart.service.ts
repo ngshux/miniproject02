@@ -6,19 +6,20 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CartService {
-  items: Product[] = [];
+  public static items: Product[] = [];
 
   constructor(private http: HttpClient) { }
 
-  addToTray(product: Product){
+  public static addToTray(product: Product){
+    product.qty=1;
     this.items.push(product);
   }
 
-  getItems(){
+  public static getItems(){
     return this.items;
   }
 
-  clearTray(){
+  public static clearTray(){
     this.items = [];
     return this.items;
   }

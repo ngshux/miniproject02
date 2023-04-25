@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { Product, products } from 'src/app/models/products';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,12 +11,12 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class ProductListComponent implements OnInit,OnDestroy {
   products: Product[] = [];
-
   sub$!: Subscription
 
   constructor(private prodSvc: ProductsService){}
 
   ngOnInit(): void {
+    //this.products=products;
       this.sub$ = this.prodSvc.onSearchResults.subscribe(
         (products) => {
           this.products = products
@@ -29,12 +29,10 @@ export class ProductListComponent implements OnInit,OnDestroy {
       this.sub$.unsubscribe()
   }
 
-  addToTray() {
+  addToTray(product: Product) {
     window.alert('Added to cart!');
+    CartService.addToTray(product);
   }
 
-  favourite() {
-    window.alert('Favourited! YumYUuyUMyumYUM')
-  }
 
 }
